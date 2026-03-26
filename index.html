@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Buy on Amazon</title>
+
+  <!-- TikTok Pixel Code -->
+  <script>
+  !function (w, d, t) {
+    w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
+    ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+    ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))};
+    };
+    for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+    ttq.load('D72DKGRC77UDI62N4K6G'); // ✅ 你的Pixel ID
+    ttq.page();
+  }(window, document, 'ttq');
+  </script>
+
+  <script>
+    function openAmazon() {
+      var asin = "B0G7X68JHT";
+
+      // Deep Link（打开Amazon App）
+      var appLink = "amazon://dp/" + asin;
+
+      // 带归因的网页链接（fallback）
+      var webLink = "https://www.amazon.com/dp/B0G7X68JHT?maas=maas_adg_F7DADE9B4A2D2542DFD04A98E7DD95AE_afap_abs&ref_=aa_maas&tag=maas&th=1";
+
+      // 👉 告诉TikTok：用户有购买意图（关键）
+      if (typeof ttq !== 'undefined') {
+        ttq.track('AddToCart');
+      }
+
+      // 尝试打开App
+      window.location.href = appLink;
+
+      // 如果失败 → 跳网页
+      setTimeout(function() {
+        window.location.href = webLink;
+      }, 1200);
+    }
+
+    // 延迟自动触发（更自然，不容易被拦）
+    setTimeout(openAmazon, 800);
+  </script>
+</head>
+
+<body style="text-align:center; font-family:sans-serif; padding:40px; background:#f5f5f5;">
+
+  <div style="max-width:400px; margin:auto; background:white; padding:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+
+    <h2>🔥 Limited Time Offer</h2>
+
+    <p style="font-size:16px; color:#555;">
+      Tap below to open in Amazon App for the best price
+    </p>
+
+    <button onclick="openAmazon()" style="
+      padding:15px 30px;
+      font-size:18px;
+      background:#ff9900;
+      border:none;
+      border-radius:8px;
+      color:white;
+      cursor:pointer;
+      margin-top:20px;">
+      Buy on Amazon
+    </button>
+
+    <p style="margin-top:15px; font-size:12px; color:#999;">
+      Secure checkout on Amazon
+    </p>
+
+  </div>
+
+</body>
+</html>
